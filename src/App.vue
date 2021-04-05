@@ -1,26 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <base-blog-list>
+      <add-list-item></add-list-item>
+      <list-item></list-item>
+    </base-blog-list>
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import BaseBlogList from "./components/base/BaseBlogList.vue";
+import ListItem from "./components/ListItem.vue";
+import AddListItem from "./components/AddListItem.vue";
 
 export default {
-  name: "App",
-  components: {
-    HelloWorld,
-  },
+  components: { BaseBlogList, ListItem, AddListItem },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
