@@ -21,7 +21,7 @@
 export default {
   data() {
     return {
-      addItemFormVis: false,
+      addItemFormVis: true,
       emptyVal: false,
       title: "",
       shortDesc: "",

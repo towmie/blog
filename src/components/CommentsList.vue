@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <ul class="comments__list">
+    <ul class="comments__list">
       <base-comment
         v-for="comment in comments"
         :key="comment.commentId"
@@ -8,7 +8,7 @@
         :name="comment.commentName"
         :comment="comment.comment"
       ></base-comment>
-    </ul> -->
+    </ul>
     <h4 class="add-comment">Add comment</h4>
     <form @submit.prevent="addComment">
       <input type="text" placeholder="Your name" v-model="name" />
@@ -19,10 +19,10 @@
 </template>
 
 <script>
-// import BaseComment from "./base/BaseComment";
+import BaseComment from "./base/BaseComment";
 export default {
   props: ["comments", "itemId"],
-  //   components: { BaseComment },
+  components: { BaseComment },
   data() {
     return {
       name: "",
