@@ -16,11 +16,9 @@
 import PostItem from "./PostItem";
 export default {
   components: { PostItem },
+
   computed: {
     itemsList() {
-      // const postList = localStorage.getItem("posts");
-      // const postListRaw = JSON.parse(postList);
-      // return postListRaw;
       return this.$store.getters.fullItemsList;
     },
   },

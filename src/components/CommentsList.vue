@@ -60,7 +60,8 @@ textarea {
   font-family: inherit;
   display: block;
   margin: 10px;
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
   font-size: 18px;
   outline: none;
   border: none;
