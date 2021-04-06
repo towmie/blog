@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-item
+    <post-item
       v-for="item in itemsList"
       :key="item.itemId"
       :item-id="item.itemId"
@@ -8,16 +8,19 @@
       :short-desc="item.shortDesc"
       :long-desc="item.longDesc"
       :comments="item.comments"
-    ></base-item>
+    ></post-item>
   </div>
 </template>
 
 <script>
-import BaseItem from "./base/BaseItem";
+import PostItem from "./PostItem";
 export default {
-  components: { BaseItem },
+  components: { PostItem },
   computed: {
     itemsList() {
+      // const postList = localStorage.getItem("posts");
+      // const postListRaw = JSON.parse(postList);
+      // return postListRaw;
       return this.$store.getters.fullItemsList;
     },
   },

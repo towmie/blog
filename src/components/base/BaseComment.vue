@@ -10,9 +10,6 @@
 
 <script>
 export default {
-  data() {
-    return {};
-  },
   props: ["comment", "name", "commentId", "itemId"],
 
   methods: {

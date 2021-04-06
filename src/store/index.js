@@ -1,4 +1,5 @@
 "use strict";
+
 import { createStore } from "vuex";
 
 export default createStore({
@@ -7,8 +8,15 @@ export default createStore({
   },
   mutations: {
     addItem(state, payload) {
+      // const postList = JSON.parse(localStorage.getItem("posts"));
+      // console.log(postList);
       state.itemList.unshift(payload);
+      // localStorage.clear();
+      // localStorage.setItem("posts", JSON.stringify(state.itemList));
+      // toLocalStr(state.itemList);
+      // console.log(postList);
     },
+
     addComment(state, payload) {
       const newComment = {
         commentId: payload.commentId,
@@ -19,6 +27,8 @@ export default createStore({
         (item) => item.itemId === payload.itemId
       );
       propperItem[0].comments.push(newComment);
+      // localStorage.clear();
+      localStorage.setItem("posts", JSON.stringify(state.itemList));
     },
 
     deleteComment(state, payload) {
@@ -29,6 +39,14 @@ export default createStore({
           );
         }
       });
+      // localStorage.clear();
+      // localStorage.setItem("posts", JSON.stringify(state.itemList));
+    },
+
+    deletePost(state, payload) {
+      state.itemList = state.itemList.filter((post) => post.itemId !== payload);
+      // localStorage.clear();
+      // localStorage.setItem("posts", JSON.stringify(state.itemList));
     },
 
     updatePost(state, payload) {
@@ -39,6 +57,8 @@ export default createStore({
           item.longDesc = payload.updatedLongDesc;
         }
       });
+      // localStorage.clear();
+      // localStorage.setItem("posts", JSON.stringify(state.itemList));
     },
   },
   actions: {
@@ -57,9 +77,16 @@ export default createStore({
     updatePost(context, payload) {
       context.commit("updatePost", payload);
     },
+    deletePost(context, payload) {
+      context.commit("deletePost", payload);
+    },
   },
   getters: {
     fullItemsList(state) {
+      //   const postList = localStorage.getItem("posts");
+      //   const postListRaw = JSON.parse(postList);
+      //   return postListRaw;
+      //   // console.log(postList);
       return state.itemList;
     },
   },

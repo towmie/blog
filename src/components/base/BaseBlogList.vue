@@ -10,7 +10,7 @@ export default {};
 
 <style scoped>
 .base-list {
-  height: 90vh;
+  min-height: 90vh;
   padding: 20px;
   max-width: 1100px;
   margin: 0 auto;
