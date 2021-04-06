@@ -20,6 +20,7 @@
           @keypress.enter="updatePost"
         />
       </div>
+      <button @click="updatePost" v-if="editMode">Update</button>
       <button class="edit__btn" @click="editPostMode"></button>
 
       <div class="commets__img-box" :data-amount="comments.length">
@@ -69,11 +70,11 @@ export default {
 
     editPostMode() {
       this.editMode = !this.editMode;
-      this.showFullItem = !this.showFullItem;
+      this.showFullItem = true;
     },
 
     updatePost() {
-      this.$emit("updatePost", {
+      this.$store.dispatch("updatePost", {
         itemId: this.itemId,
         updatedTitle: this.updatedTitle,
         updatedShortDesc: this.updatedShortDesc,

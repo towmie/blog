@@ -4,7 +4,6 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     itemList: [],
-    deleteComment: [],
   },
   mutations: {
     addItem(state, payload) {
@@ -23,7 +22,13 @@ export default createStore({
     },
 
     deleteComment(state, payload) {
-      console.log("wack", state, payload);
+      state.itemList.map((item) => {
+        if (item.itemId === payload.itemId) {
+          item.comments = item.comments.filter(
+            (comment) => comment.commentId !== payload.commentId
+          );
+        }
+      });
     },
 
     updatePost(state, payload) {
@@ -32,7 +37,6 @@ export default createStore({
           item.title = payload.updatedTitle;
           item.shortDesc = payload.updatedShortDesc;
           item.longDesc = payload.updatedLongDesc;
-          console.log(payload.updatedTitle, payload.updatedShortDesc);
         }
       });
     },

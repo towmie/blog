@@ -14,6 +14,7 @@ export default {
     return {};
   },
   props: ["comment", "name", "commentId", "itemId"],
+
   methods: {
     deleteComment() {
       this.$store.dispatch("deleteComment", {
