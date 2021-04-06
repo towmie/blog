@@ -9,10 +9,10 @@
           placeholder="Short Description"
           v-model="shortDesc"
         />
-        <input type="text" placeholder=" Description" v-model="longDesc" />
+        <textarea type="text" placeholder=" Description" v-model="longDesc" />
         <button type="submit">Submit</button>
       </form>
-      <p v-if="emptyVal">Заполните все поля</p>
+      <p v-if="emptyVal" class="error">Заполните все поля</p>
     </div>
   </div>
 </template>
@@ -46,6 +46,7 @@ export default {
 
         this.emptyVal = false;
         (this.title = ""), (this.shortDesc = ""), (this.longDesc = "");
+        this.addItemFormVis = false;
       } else {
         this.emptyVal = true;
       }
@@ -55,13 +56,43 @@ export default {
 </script>
 
 <style scoped>
-button {
-  display: block;
-  margin: 0 auto;
+.error {
+  text-align: center;
+  color: red;
 }
 
-input {
+input,
+textarea {
+  font-family: inherit;
   display: block;
   margin: 10px auto;
+  width: 400px;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  background-color: rgb(240, 241, 252);
+  color: rgb(83, 83, 83);
+
+  padding: 8px 30px 8px 10px;
+
+  border-radius: 10px;
+  box-shadow: -8px -4px 8px 0px #ffffff, 8px 4px 12px 0px #d1d9e6,
+    4px 4px 4px 0px #d1d9e6 inset, -4px -4px 4px 0px #ffffff inset;
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+  outline: none;
+  font-family: inherit;
+  border: none;
+  padding: 10px 20px;
+  background-color: #e4e7fc;
+  border-radius: 10px;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  box-shadow: 8px 4px 12px 0px #d1d9e6, 4px 4px 4px 0px rgb(246, 246, 252) inset;
 }
 </style>
