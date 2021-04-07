@@ -119,8 +119,10 @@ export default {
 .title {
   padding-left: 30px;
   position: relative;
+  cursor: pointer;
 }
 .arrow {
+  cursor: pointer;
   position: absolute;
   top: 25px;
   left: 45px;
