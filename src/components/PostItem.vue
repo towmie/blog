@@ -2,6 +2,7 @@
   <div class="item">
     <div class="short">
       <div>
+        <button class="arrow" :class="{ rotate: showFullItem }"></button>
         <h2 @click="revealFullItem" class="title" v-if="!editMode">
           {{ title }}
         </h2>
@@ -98,6 +99,9 @@ export default {
 </script>
 
 <style scoped>
+.rotate {
+  transform: rotate(180deg);
+}
 .item {
   position: relative;
   padding: 20px 40px;
@@ -110,6 +114,21 @@ export default {
 }
 .title {
   padding-left: 30px;
+  position: relative;
+}
+.arrow {
+  position: absolute;
+  top: 25px;
+  left: 45px;
+  width: 15px;
+  height: 15px;
+
+  border: none;
+  background-color: transparent;
+  background-image: url(./../assets/arrow.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 input,
