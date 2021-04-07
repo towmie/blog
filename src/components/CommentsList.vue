@@ -10,7 +10,7 @@
         :item-id="itemId"
       ></base-comment>
     </ul>
-    <h4 class="add-comment">Add comment</h4>
+    <h4 class="add-comment">Добавить Комментарий</h4>
     <form @submit.prevent="addComment">
       <input type="text" placeholder="Your name" v-model="name" />
       <textarea type="text" placeholder="Your comment" v-model="comment" />

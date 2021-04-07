@@ -3,14 +3,10 @@
     <button @click="ShowForm">+</button>
     <div v-if="addItemFormVis">
       <form @submit.prevent="addItem">
-        <input type="text" placeholder="Title" v-model="title" />
-        <input
-          type="text"
-          placeholder="Short Description"
-          v-model="shortDesc"
-        />
-        <textarea type="text" placeholder=" Description" v-model="longDesc" />
-        <button type="submit">Submit</button>
+        <input type="text" placeholder="Заголовок" v-model="title" />
+        <input type="text" placeholder="Краткое Описание" v-model="shortDesc" />
+        <textarea type="text" placeholder="Заметка" v-model="longDesc" />
+        <button type="submit">Добавить</button>
       </form>
       <p v-if="emptyVal" class="error">Заполните все поля</p>
     </div>
@@ -36,13 +32,14 @@ export default {
 
     addItem() {
       if (this.title && this.shortDesc && this.longDesc) {
-        this.$store.dispatch("addItem", {
+        const newPost = {
           itemId: Math.random(),
           title: this.title,
           shortDesc: this.shortDesc,
           longDesc: this.longDesc,
           comments: [],
-        });
+        };
+        this.$store.dispatch("addItem", newPost);
 
         this.emptyVal = false;
         (this.title = ""), (this.shortDesc = ""), (this.longDesc = "");

@@ -8,7 +8,10 @@ export default createStore({
   },
   mutations: {
     addItem(state, payload) {
+      console.log(state.itemList);
       state.itemList.unshift(payload);
+      const parsed = JSON.stringify(state.itemList);
+      localStorage.setItem("posts", parsed);
     },
 
     addComment(state, payload) {
@@ -18,9 +21,11 @@ export default createStore({
         comment: payload.comment,
       };
       const propperItem = state.itemList.filter(
-        (item) => item.itemId === payload.itemId
+        (post) => post.itemId === payload.itemId
       );
       propperItem[0].comments.push(newComment);
+      const parsed = JSON.stringify(state.itemList);
+      localStorage.setItem("posts", parsed);
     },
 
     deleteComment(state, payload) {
@@ -31,10 +36,14 @@ export default createStore({
           );
         }
       });
+      const parsed = JSON.stringify(state.itemList);
+      localStorage.setItem("posts", parsed);
     },
 
     deletePost(state, payload) {
       state.itemList = state.itemList.filter((post) => post.itemId !== payload);
+      const parsed = JSON.stringify(state.itemList);
+      localStorage.setItem("posts", parsed);
     },
 
     updatePost(state, payload) {
@@ -45,6 +54,8 @@ export default createStore({
           item.longDesc = payload.updatedLongDesc;
         }
       });
+      const parsed = JSON.stringify(state.itemList);
+      localStorage.setItem("posts", parsed);
     },
   },
   actions: {
@@ -69,6 +80,9 @@ export default createStore({
   },
   getters: {
     fullItemsList(state) {
+      if (localStorage.getItem("posts")) {
+        state.itemList = JSON.parse(localStorage.getItem("posts"));
+      }
       return state.itemList;
     },
   },

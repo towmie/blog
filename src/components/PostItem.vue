@@ -44,7 +44,7 @@
         @keypress.enter="updatePost"
       />
 
-      <h4 class="comments">Comments:</h4>
+      <h4 class="comments">Комментарии:</h4>
       <comments-list
         v-if="showFullItem"
         :comments="comments"
