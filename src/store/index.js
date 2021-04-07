@@ -2,16 +2,20 @@
 
 import { createStore } from "vuex";
 
+function saveToLS(list) {
+  const parsed = JSON.stringify(list);
+  localStorage.setItem("posts", parsed);
+}
+
 export default createStore({
   state: {
     itemList: [],
   },
   mutations: {
     addItem(state, payload) {
-      console.log(state.itemList);
       state.itemList.unshift(payload);
-      const parsed = JSON.stringify(state.itemList);
-      localStorage.setItem("posts", parsed);
+
+      saveToLS(state.itemList);
     },
 
     addComment(state, payload) {
@@ -24,8 +28,8 @@ export default createStore({
         (post) => post.itemId === payload.itemId
       );
       propperItem[0].comments.push(newComment);
-      const parsed = JSON.stringify(state.itemList);
-      localStorage.setItem("posts", parsed);
+
+      saveToLS(state.itemList);
     },
 
     deleteComment(state, payload) {
@@ -36,14 +40,12 @@ export default createStore({
           );
         }
       });
-      const parsed = JSON.stringify(state.itemList);
-      localStorage.setItem("posts", parsed);
+      saveToLS(state.itemList);
     },
 
     deletePost(state, payload) {
       state.itemList = state.itemList.filter((post) => post.itemId !== payload);
-      const parsed = JSON.stringify(state.itemList);
-      localStorage.setItem("posts", parsed);
+      saveToLS(state.itemList);
     },
 
     updatePost(state, payload) {
@@ -54,8 +56,7 @@ export default createStore({
           item.longDesc = payload.updatedLongDesc;
         }
       });
-      const parsed = JSON.stringify(state.itemList);
-      localStorage.setItem("posts", parsed);
+      saveToLS(state.itemList);
     },
   },
   actions: {

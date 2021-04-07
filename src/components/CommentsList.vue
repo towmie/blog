@@ -12,9 +12,9 @@
     </ul>
     <h4 class="add-comment">Добавить Комментарий</h4>
     <form @submit.prevent="addComment">
-      <input type="text" placeholder="Your name" v-model="name" />
-      <textarea type="text" placeholder="Your comment" v-model="comment" />
-      <button>Submit</button>
+      <input type="text" placeholder="Ваше Имя" v-model="name" />
+      <textarea type="text" placeholder="Ваш Комментарий" v-model="comment" />
+      <button>Подтвердить</button>
       <p v-if="error" class="error">Заполните все поля</p>
     </form>
   </div>
