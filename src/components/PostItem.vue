@@ -2,7 +2,11 @@
   <div class="item">
     <div class="short">
       <div>
-        <button class="arrow" :class="{ rotate: showFullItem }"></button>
+        <button
+          class="arrow"
+          :class="{ rotate: showFullItem }"
+          v-if="!editMode"
+        ></button>
         <h2 @click="revealFullItem" class="title" v-if="!editMode">
           {{ title }}
         </h2>
