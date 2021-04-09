@@ -28,6 +28,8 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: 400;
+  background-image: url(./assets/graph-paper.svg);
+  background-blend-mode: lighten;
 }
 
 h1,

@@ -8,6 +8,7 @@
           v-if="!editMode"
         ></button>
         <h2 @click="revealFullItem" class="title" v-if="!editMode">
+          <span>заголовок: </span>
           {{ title }}
         </h2>
         <input
@@ -17,6 +18,8 @@
           v-model="updatedTitle"
         />
         <h4 class="short-desc" v-if="!editMode">
+          <span>описание: </span>
+
           {{ shortDesc }}
         </h4>
         <input
@@ -116,8 +119,18 @@ export default {
   border-left: 1px solid #fff;
   box-shadow: 8px 4px 12px 0px #d1d9e6, 4px 4px 4px 0px rgb(246, 246, 252) inset;
 }
-.title {
+
+.short-desc {
+  font-weight: 300;
+}
+
+.item span {
+  font-weight: 300;
+  font-size: 12px;
   padding-left: 30px;
+  padding-right: 10px;
+}
+.title {
   position: relative;
   cursor: pointer;
 }
